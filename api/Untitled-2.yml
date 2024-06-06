@@ -1,0 +1,441 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Barang Toko RESTful API",
+    "version": "1",
+    "description": "OpenAPI untuk List Barang Toko",
+    "license": {
+      "name": "APACHE 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "servers": [
+    {
+      "description": "UMKM-Digital" RESTful API Server",
+      "url": "https://{environment}.keuangan./api/v1",
+      "variables": {
+        "environment": {
+          "description": "Server Environment",
+          "default": "dev",
+          "enum": [
+            "dev",
+            "qa",
+            "prod"
+          ]
+        }
+      }
+    }
+  ],
+  "externalDocs": {
+    "description": "UMKM-Digital",
+    "url": "https://www.keuangan.com/c/UMKM-Digital"
+  },
+  "paths": {
+    "/todolist": {
+      "get": {
+        "security": [
+          {
+            "UMKM-DigitalAuth": []
+          }
+        ],
+        "tags": [
+          "UMKM-Digital"
+        ],
+        "summary": "Get all UMKM-Digital",
+        "description": "Get all active UMKM-Digital by default",
+        "parameters": [
+          {
+            "name": "include_done",
+            "in": "query",
+            "required": false,
+            "description": "Is include done UMKM-Digital",
+            "schema": {
+              "type": "boolean",
+              "nullable": true,
+              "default": false
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Filter UMKM-Digital by name",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "examples": {
+              "java": {
+                "description": "Example name Java",
+                "value": "Java"
+              },
+              "php": {
+                "description": "Example name PHP",
+                "value": "PHP"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all UMKM-Digital",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrayUMKM-Digital"
+                },
+                "examples": {
+                  "success": {
+                    "description": "Example success get all UMKM-Digital",
+                    "value": [
+                      {
+                        "id": "1",
+                        "name": "Java",
+                        "priority": 3,
+                        "tags": [
+                          "Java",
+                          "Programming"
+                        ]
+                      },
+                      {
+                        "id": "2",
+                        "name": "PHP",
+                        "priority": 5,
+                        "tags": [
+                          "PHP",
+                          "Programming"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "UMKM-DigitalAuth": []
+          }
+        ],
+        "tags": [
+          "Dompet-Qu"
+        ],
+        "summary": "Create new UMKM-Digital",
+        "description": "Create new UMKM-Digital to database",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateUMKM-Digital"
+              },
+              "examples": {
+                "java": {
+                  "description": "Example create UMKM-Digital Java",
+                  "value": {
+                    "name": "Java",
+                    "priority": 3,
+                    "tags": [
+                      "Java",
+                      "Programming"
+                    ]
+                  }
+                },
+                "php": {
+                  "description": "Example create UMKM-Digital PHP",
+                  "value": {
+                    "name": "PHP",
+                    "priority": 5,
+                    "tags": [
+                      "PHP",
+                      "Programming"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success create UMKM-Digital",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UMKM-Digital"
+                },
+                "examples": {
+                  "java": {
+                    "description": "Success create java UMKM-Digital",
+                    "value": {
+                      "id": "1",
+                      "name": "Java",
+                      "priority": 3,
+                      "tags": [
+                        "Java",
+                        "Programming"
+                      ]
+                    }
+                  },
+                  "php": {
+                    "description": "Success create php UMKM-Digital",
+                    "value": {
+                      "id": "2",
+                      "name": "PHP",
+                      "priority": 5,
+                      "tags": [
+                        "PHP",
+                        "Programming"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todolist/{UMKM-DigitalId}": {
+      "put": {
+        "security": [
+          {
+            "UMKM-DigitalAuth": []
+          }
+        ],
+        "tags": [
+          "UMKM-Digital"
+        ],
+        "summary": "Update existing UMKM-Digital",
+        "description": "Update existing UMKM-Digital in database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UMKM-DigitalId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateUMKM-Digital"
+              },
+              "examples": {
+                "java": {
+                  "description": "Example create UMKM-Digital Java",
+                  "value": {
+                    "name": "Java",
+                    "priority": 3,
+                    "tags": [
+                      "Java",
+                      "Programming"
+                    ]
+                  }
+                },
+                "php": {
+                  "description": "Example create UMKM-Digital PHP",
+                  "value": {
+                    "name": "PHP",
+                    "priority": 5,
+                    "tags": [
+                      "PHP",
+                      "Programming"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update UMKM-Digital",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UMKM-Digital"
+                },
+                "examples": {
+                  "java": {
+                    "description": "Success create java UMKM-Digital",
+                    "value": {
+                      "id": "1",
+                      "name": "Java",
+                      "priority": 3,
+                      "tags": [
+                        "Java",
+                        "Programming"
+                      ]
+                    }
+                  },
+                  "php": {
+                    "description": "Success create php UMKM-Digital",
+                    "value": {
+                      "id": "2",
+                      "name": "PHP",
+                      "priority": 5,
+                      "tags": [
+                        "PHP",
+                        "Programming"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "UMKM-DigitalAuth": []
+          }
+        ],
+        "tags": [
+          "UMKM-Digital""
+        ],
+        "summary": "Delete existing UMKM-Digital",
+        "description": "Delete existing UMKM-Digital in database",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UMKM-Digital"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete UMKM-Digital",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Success delete UMKM-Digital",
+                    "value": {
+                      "success": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete not found UMKM-Digital",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "failed": {
+                    "description": "Failed delete UMKM-Digital",
+                    "value": {
+                      "success": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Dompet-QuAuth": {
+        "description": "Authentication for UMKM-Digital RESTful API",
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
+    "parameters": {
+      "Dompet-QuId": {
+        "name": "UMKM-Digital",
+        "in": "path",
+        "required": true,
+        "description": "UMKM-Digital" id for updated",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "examples": {
+          "java": {
+            "description": "Sample UMKM-Digital id for Java",
+            "value": "1"
+          },
+          "php": {
+            "description": "Sample UMKM-Digital id for PHP",
+            "value": "2"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "UMKM-Digital": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "number",
+            "format": "int32"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateOrUpdateUMKM-Digitl": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "number",
+            "format": "int32"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ArrayUMKM-Digital": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UMKM-Digital"
+        }
+      }
+    }
+  }
+}.keuangan./api/v1"
